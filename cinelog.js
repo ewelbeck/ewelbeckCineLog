@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
 
 app.get("/movies", async (req, res) => {
     const page = parseInt(req.query.page) || 1;
-    const limit = 5;
+    const limit = 10;
     const skip = (page - 1) * limit;
     const sortOption = req.query.sort;
     let sortQuery = {};
@@ -133,3 +133,4 @@ app.listen(PORT, () => {
     console.log(`CineLog running on port ${PORT}`);
 
 });
+
