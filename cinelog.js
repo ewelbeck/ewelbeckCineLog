@@ -129,6 +129,7 @@ app.post("/movies/clear", async (req, res) => {
     await Movie.deleteMany({});
     res.redirect("/movies");
 });
-// app.listen(PORT, () => {
-//     console.log(`CineLog running on port ${PORT}`);
-// });
+app.listen(PORT, () => {
+    console.log(`CineLog running on port ${PORT}`);
+
+});
