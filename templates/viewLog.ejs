@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Watchlist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/viewLog.css">
+    <link rel="icon"  href="/photos/reel.ico" type="image/x-icon" sizes="96x96">
+</head>
+<body>
+    <h1>My Watchlist</h1>
+    <div class="controls">
+        <form method="GET" action="/movies">
+            <label for="sort">Sort by:</label>
+            <select name="sort" id="sort">
+                <option value="">Default</option>
+                <option value="title" <%=sort==="title" ? "selected" : "" %>>
+                    Alphabetical
+                </option>
+                <option value="date" <%=sort==="date" ? "selected" : "" %>>
+                    Date Added
+                </option>
+                <option value="rating" <%=sort==="rating" ? "selected" : "" %>>
+                    Rating
+                </option>
+                <option value="watched" <%=sort==="watched" ? "selected" : "" %>>
+                    Watch Status
+                </option>
+            </select>
+            <button type="submit">Sort</button>
+        </form>
+    </div>
+    <% if (!movies || movies.length===0) { %>
+        <p>No movies in your list yet.</p>
+        <% } else { %>
+            <p>Showing movies <%= start %>–<%= end %> of <%= totalMovies %>
+            </p>
+            <% } %>
+                <div class="movie-grid">
+                    <% movies.forEach(movie=> { %>
+                        <div class="movie">
+                            <% if (movie.poster && movie.poster !=="N/A" ) { %>
+                                <img src="<%= movie.poster %>" alt="Poster">
+                                <% } %>
+                                    <div class="movie-info">
+                                        <h2>
+                                            <%= movie.title %> (<%= movie.year %>)
+                                        </h2>
+                                        <p><strong>Plot:</strong>
+                                            <%= movie.plot %>
+                                        </p>
+                                        <% if (movie.watched) { %>
+                                            <p class="watched"><span class="override-cream">Status:</span> Watched</p>
+                                            <p><strong>My Rating:</strong>
+                                                <%= movie.userRating %>/5
+                                            </p>
+
+                                            <% if (movie.review) { %>
+                                                <p><strong>Remarks: </strong>
+                                                    <%= movie.review %>
+                                                </p>
+                                                <a href="/movies/review/<%= movie._id %>">Edit Review</a>
+                                                <% } %>
+                                                    <% } else { %>
+                                                        <p><strong>Status:</strong> Not watched</p>
+                                                        <a href="/movies/review/<%= movie._id %>">
+                                                            Write a Review
+                                                        </a>
+                                                        <% } %>
+
+                                                            <form method="POST" action="/movies/delete/<%= movie._id %>"
+                                                                onsubmit="return confirm('Delete <%= movie.title %> from watchlist?');">
+                                                                <button type="submit">Remove</button>
+                                                            </form>
+                                    </div>
+                        </div>
+                        <% }); %>
+                </div>
+                <div class="pagination">
+                    <% if (currentPage> 1) { %>
+                        <a href="/movies?page=<%= currentPage - 1 %>&sort=<%= sort %>"> Previous</a>
+                        <% } %>
+                            <% if (end < totalMovies) { %>
+                                <a href="/movies?page=<%= currentPage + 1 %>&sort=<%= sort %>"> Next</a>
+                                <% } %>
+                </div>
+                <hr>
+                <div class="links">
+                    <a class="add-button" href="/movies/add">Add another movie</a>
+                    <a class="home-button" href="/"> Home</a>
+                    <form method="POST" action="/movies/clear"
+                        onsubmit="return confirm('Are you sure you want to delete your entire watchlist? This cannot be undone.')">
+                        <button id="clear-log" type="submit" class="danger">
+                            Clear Entire Log
+                        </button>
+                    </form><br>
+                </div>
+</body>
+</html>

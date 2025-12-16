@@ -1,0 +1,204 @@
+body {
+    margin: 0;
+    padding: 2rem;
+    background-color: rgb(35, 5, 5);
+    font-family: "Montserrat", sans-serif;
+    color: rgb(255, 230, 200);
+}
+
+h1 {
+    font-family: "Limelight", sans-serif;
+    font-size: 3.5rem;
+    text-align: center;
+    color: rgb(255, 183, 82);
+    margin-bottom: 1.5rem;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.controls form {
+    background-color: rgba(23, 0, 0, 0.85);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border: 3px solid darkred;
+}
+
+select,
+button {
+    font-family: "Montserrat", sans-serif;
+    padding: 0.4rem 0.7rem;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+}
+
+button {
+    background-color: rgb(200, 100, 50);
+    color: white;
+    border: 2px solid rgb(138, 62, 0);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(255, 183, 82);
+    color: black;
+    transition: ease-in-out 0.5s;
+}
+
+p {
+    text-align: center;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.movie {
+    display: flex;
+    gap: 1rem;
+    background-color: rgba(23, 0, 0, 0.85);
+    border: 5px solid darkred;
+    border-radius: 10px;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.movie img {
+    width: 160px;
+    height: auto;
+    border-radius: 6px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.movie-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.movie-info h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: rgb(255, 183, 82);
+}
+
+.movie-info p {
+    margin: 0.2rem 0;
+    text-align: left;
+}
+
+.watched {
+    color: rgb(120, 220, 120);
+    font-weight: bold;
+}
+
+.movie-info a {
+    margin-top: 0.5rem;
+    color: rgb(255, 183, 82);
+    text-decoration: underline;
+}
+
+.movie-info a:hover {
+    color: white;
+}
+
+.movie-info form {
+    margin-top: 0.5rem;
+}
+
+.pagination {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.pagination a {
+    margin: 0 0.75rem;
+    color: rgb(255, 183, 82);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    color: white;
+}
+
+.home-link {
+    display: block;
+    margin-top: 2rem;
+    text-align: center;
+    font-family: "Limelight", sans-serif;
+    font-size: 1.3rem;
+    color: rgb(255, 183, 82);
+    text-decoration: none;
+}
+
+.home-link:hover {
+    color: white;
+}
+
+.override-cream {
+    color: rgb(255, 230, 200);
+}
+
+button.danger {
+    background-color: red;
+    color: rgb(255, 230, 200);
+    ;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    margin-top: 10px;
+    margin-left: -2px;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+}
+
+button.danger:hover {
+    color: red;
+    background-color: rgb(73, 63, 65);
+}
+
+hr {
+    color: rgb(255, 183, 82);
+    margin-bottom: 1rem;
+}
+
+.links a {
+    font-family: "Limelight", sans-serif;
+    font-size: 1.2rem;
+    color: rgb(255, 183, 82);
+    text-decoration: none;
+}
+
+.links a:hover {
+    color: white;
+}
+
+.nav-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    color: white;
+    background-color: rgb(200, 100, 50);
+    border: 2px solid rgb(138, 62, 0);
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.nav-btn:hover {
+    background-color: rgb(255, 183, 82);
+    color: black;
+    transition: ease-in-out 0.4s;
+}
+
+.add-button {
+    margin-right: 74rem;
+}

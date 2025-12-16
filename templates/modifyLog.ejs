@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Review Movie – CineLog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/modifyLog.css">
+    <link rel="icon"  href="/photos/reel.ico" type="image/x-icon" sizes="96x96">
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <%= movie.review ? "Edit Review: " : "Review" %>
+                <%= movie.title %> (<%= movie.year %>)
+        </h1>
+        <form method="POST" action="/movies/review/<%= movie._id %>">
+            <label for="rating"><strong>Your Rating:</strong></label><br>
+            <select name="userRating" id="rating" required>
+                <option value="">Select rating</option>
+                <option value="1">&#11088;</option>
+                <option value="2">&#11088; &#11088;</option>
+                <option value="3">&#11088; &#11088; &#11088;</option>
+                <option value="4">&#11088; &#11088; &#11088; &#11088;</option>
+                <option value="5">&#11088; &#11088; &#11088; &#11088; &#11088;</option>
+            </select>
+            <br><br>
+            <label for="review"><strong>Your Review:</strong></label><br>
+            <textarea name="review" id="review" maxlength="1500" placeholder="Write your thoughts here..." required>
+        <%= movie.review ? movie.review : "" %>
+      </textarea>
+            <p class="counter">
+                Max 250 words (approx. 1500 characters)
+            </p>
+            <button type="submit">
+                <%= movie.review ? "Update Review" : "Save Review" %>
+            </button>
+        </form>
+        <div class="links">
+            <a href="/movies">Back to Watchlist</a>
+            <a class="home-button" href="/">Home</a>
+        </div>
+    </div>
+</body>
+</html>

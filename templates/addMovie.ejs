@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Movie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/addMovie.css">
+    <link rel="icon"  href="/photos/reel.ico" type="image/x-icon" sizes="96x96">
+</head>
+<body>
+    <div class="container">
+        <h1>Add Movie to Watchlist</h1>
+        <form method="POST" action="/movies/search">
+            <input type="text" name="title" placeholder="Movie title" required>
+            <button type="submit">Search</button>
+        </form>
+        <% if (error) { %>
+            <div class="error">
+                <%= error %>
+            </div>
+            <% } %>
+                <div class="movie-display">
+                    <% if (movie) { %>
+                        <div class="poster">
+                            <img src="<%= movie.Poster %>">
+                        </div>
+                        <div class="plot-box">
+                            <h2>
+                                <%= movie.Title %> (<%= movie.Year %>)
+                            </h2>
+                            <p>
+                                <%= movie.Plot %>
+                            </p>
+                            <form method="POST" action="/movies/save">
+                                <input type="hidden" name="title" value="<%= movie.Title %>">
+                                <input type="hidden" name="year" value="<%= movie.Year %>">
+                                <input type="hidden" name="imdbID" value="<%= movie.imdbID %>">
+                                <input type="hidden" name="poster" value="<%= movie.Poster %>">
+                                <input type="hidden" name="plot" value="<%= movie.Plot %>">
+                                <input type="hidden" name="rating" value="<%= movie.imdbRating %>">
+                                <button type="submit">Add to Watchlist</button>
+                            </form>
+                        </div>
+                        <% } %>
+                </div>
+                <a class="home-button" href="/">Home</a>
+    </div>
+</body>
+</html>
